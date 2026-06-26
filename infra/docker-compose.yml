@@ -1,8 +1,5 @@
 services:
-
-  # ════════════════════════════════════════════════════════
-  # POSTGRESQL — um banco isolado por serviço
-  # ════════════════════════════════════════════════════════
+  # Bancos
 
   db-usuario:
     image: postgres:16-alpine
@@ -140,9 +137,7 @@ services:
       timeout: 5s
       retries: 5
 
-  # ════════════════════════════════════════════════════════
   # REDIS — compartilhado entre ms-restaurante, ms-catalogo e ms-entrega
-  # ════════════════════════════════════════════════════════
 
   redis:
     image: redis:7-alpine
@@ -158,9 +153,7 @@ services:
       timeout: 5s
       retries: 5
 
-  # ════════════════════════════════════════════════════════
   # KAFKA — mensageria assíncrona entre os microsserviços
-  # ════════════════════════════════════════════════════════
 
   zookeeper:
     image: confluentinc/cp-zookeeper:7.6.1
@@ -202,9 +195,7 @@ services:
       KAFKA_CLUSTERS_0_NAME: local
       KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:29092
 
-  # ════════════════════════════════════════════════════════
   # KEYCLOAK — identity provider com banco PostgreSQL dedicado
-  # ════════════════════════════════════════════════════════
 
   keycloak:
     image: quay.io/keycloak/keycloak:24.0.4
@@ -225,9 +216,7 @@ services:
     ports:
       - "8180:8080"
 
-  # ════════════════════════════════════════════════════════
   # OBSERVABILIDADE — tracing, métricas e dashboards
-  # ════════════════════════════════════════════════════════
 
   zipkin:
     image: openzipkin/zipkin:3
@@ -260,9 +249,7 @@ services:
     volumes:
       - grafana-data:/var/lib/grafana
 
-# ════════════════════════════════════════════════════════
 # VOLUMES — persistência de dados entre restarts
-# ════════════════════════════════════════════════════════
 
 volumes:
   pg-usuario:
