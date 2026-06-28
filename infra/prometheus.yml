@@ -4,11 +4,6 @@ global:
 
 scrape_configs:
 
-  - job_name: ms-api-gateway
-    static_configs:
-      - targets: ['host.docker.internal:8080']
-    metrics_path: /actuator/prometheus
-
   - job_name: ms-usuario
     static_configs:
       - targets: ['host.docker.internal:8081']
