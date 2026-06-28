@@ -1,47 +1,8 @@
 spring:
   application:
     name: ms-api-gateway
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          jwk-set-uri: http://localhost:8180/realms/delivery/protocol/openid-connect/certs
-  cloud:
-    gateway:
-      mvc:
-        routes:
-          - id: ms-usuario
-            uri: http://localhost:8081
-            predicates:
-              - Path=/api/usuarios/**
-          - id: ms-restaurante
-            uri: http://localhost:8082
-            predicates:
-              - Path=/api/restaurantes/**
-          - id: ms-catalogo
-            uri: http://localhost:8083
-            predicates:
-              - Path=/api/catalogo/**
-          - id: ms-pedido
-            uri: http://localhost:8084
-            predicates:
-              - Path=/api/pedidos/**
-          - id: ms-pagamento
-            uri: http://localhost:8085
-            predicates:
-              - Path=/api/pagamentos/**
-          - id: ms-entrega
-            uri: http://localhost:8086
-            predicates:
-              - Path=/api/entregas/**
-          - id: ms-avaliacao
-            uri: http://localhost:8087
-            predicates:
-              - Path=/api/avaliacoes/**
-          - id: ms-notificacao
-            uri: http://localhost:8088
-            predicates:
-              - Path=/api/notificacoes/**
+  profiles:
+    active: ${APP_PROFILE:dev}
 
 server:
   port: 8080
