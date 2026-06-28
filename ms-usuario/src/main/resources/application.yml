@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: ms-usuario
+  profiles:
+    active: ${APP_PROFILE:dev}
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+  flyway:
+    locations: classpath:db/migration
+  kafka:
+    consumer:
+      group-id: usuario-group
+      auto-offset-reset: earliest
+
+server:
+  port: 8081
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  endpoint:
+    prometheus:
+      enabled: true
+  tracing:
+    sampling:
+      probability: 1.0
