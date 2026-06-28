@@ -1,0 +1,47 @@
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: ${KEYCLOAK_JWK_URI}
+  cloud:
+    gateway:
+      server:
+        webmvc:
+          routes:
+            - id: ms-usuario
+              uri: ${MS_USUARIO_URL}
+              predicates:
+                - Path=/api/usuarios/**
+            - id: ms-restaurante
+              uri: ${MS_RESTAURANTE_URL}
+              predicates:
+                - Path=/api/restaurantes/**
+            - id: ms-catalogo
+              uri: ${MS_CATALOGO_URL}
+              predicates:
+                - Path=/api/catalogo/**
+            - id: ms-pedido
+              uri: ${MS_PEDIDO_URL}
+              predicates:
+                - Path=/api/pedidos/**
+            - id: ms-pagamento
+              uri: ${MS_PAGAMENTO_URL}
+              predicates:
+                - Path=/api/pagamentos/**
+            - id: ms-entrega
+              uri: ${MS_ENTREGA_URL}
+              predicates:
+                - Path=/api/entregas/**
+            - id: ms-avaliacao
+              uri: ${MS_AVALIACAO_URL}
+              predicates:
+                - Path=/api/avaliacoes/**
+            - id: ms-notificacao
+              uri: ${MS_NOTIFICACAO_URL}
+              predicates:
+                - Path=/api/notificacoes/**
+
+logging:
+  level:
+    com.bj_food: INFO
