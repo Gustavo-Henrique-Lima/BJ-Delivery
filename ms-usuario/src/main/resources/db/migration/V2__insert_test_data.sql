@@ -1,0 +1,2 @@
+INSERT INTO tb_user (id, keycloak_id, name, email, phone, active, created_at, updated_at) VALUES
+    (gen_random_uuid(), '85a925e6-6981-436f-8354-a0755b854273', 'John Doe', 'john.doe@email.com', '11999990001', true, NOW(), NOW());

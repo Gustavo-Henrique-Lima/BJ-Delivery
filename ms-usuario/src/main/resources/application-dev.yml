@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5442/usuario
+    username: usuario
+    password: usuario123
+  kafka:
+    bootstrap-servers: localhost:9092
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8180/realms/delivery/protocol/openid-connect/certs
+
+logging:
+  level:
+    com.bj_food: DEBUG
+    org.springframework.web: INFO
+    org.flywaydb: INFO
